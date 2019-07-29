@@ -3,7 +3,7 @@ package backjun;
 import java.util.*;
 
 public class m1260_Array {
-	public void main(String args[])
+	public static void main(String args[])
 	{
 		Scanner sc = new Scanner(System.in);
 		
@@ -22,15 +22,26 @@ public class m1260_Array {
 			array[end][start] = 1;
 		}
 		
-		boolean visitedBFS[][] = new boolean[n+1][n+1];
+		boolean visitedDFS[] = new boolean[n+1];
 		
-		//bfs
+		dfs(n,v,array,visitedDFS);		
 		
-		for (int a=1; a<=n; a++)
+		
+		
+	}
+	
+	public static void dfs(int n, int v, int array[][], boolean visited[])
+	{
+		visited[v] = true;
+		System.out.print(v+" ");
+		
+		for(int a=1; a<n+1; a++)
 		{
-			for(int b=1; b<)
+			if(array[v][a] == 1 && visited[a] != true)
+			{
+				dfs(n,a,array,visited);
+			}
 		}
-		
 		
 	}
 }
