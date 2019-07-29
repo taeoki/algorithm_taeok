@@ -53,8 +53,23 @@ public class m1260 {
 		// dfs
 		
 		
-		//System.out.println("q의 길이: "+q.length);
-		//System.out.println("q[1]의 길이: "+q[1]);
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//bfs
+		
+		
+		
+	
 		
 		LinkedList<Integer> queue = new LinkedList<Integer>();
 		boolean visited[] = new boolean[n+1];
@@ -90,13 +105,4 @@ public class m1260 {
 	
 }
 
-class node {
-	int nodeNumber;
-	int adjCount;
-	
-	node(int start)
-	{
-		
-	}
-	
-}
+
