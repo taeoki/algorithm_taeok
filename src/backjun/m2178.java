@@ -1,27 +1,87 @@
 package backjun;
 
-
 import java.util.*;
-
+import java.io.*;
 public class m2178 {
-	public static void main(String[] args) {
+	
+	static int arr[][];	// 1,0Ïù¥ Îã¥Í∏∏ Í≥≥
+	static int n,m;
+	static int[] dx = {-1,0,1,0};
+	static int[] dy = {0,1,0,-1};
+	static LinkedList<Node> adj[][];
+	static boolean visited[][];
+	
+	public static void main(String[] args) throws IOException {
+		//Scanner sc = new Scanner(new FileInputStream("input.txt"));
 		Scanner sc = new Scanner(System.in);
 		
-		int n = sc.nextInt();	// ∞°∑Œ
-		int m = sc.nextInt();	// ºº∑Œ
+		n = sc.nextInt();
+		m = sc.nextInt();
+		
+		arr = new int[n][m];
+		adj = new LinkedList[n][m];
+		visited= new boolean[n][m];
+		
 		sc.nextLine();
 		
-		int miro[][] = new int[n+1][m+1];
-		
-		for(int a = 1; a < n+1; a++)
+		for(int i =0; i<n; i++)
 		{
 			String str = sc.nextLine();
-			for (int b=1; b < m+1; b++)
+			
+			for(int j=0; j<m; j++)
 			{
-				miro[a][b] = str.charAt(b) - '0';
+				arr[i][j] = str.charAt(j)-'0';
+				visited[i][j] = false;
 			}
 		}
+		BFS(0,0);
 		
-		// ∫Æ¿ª ≥—¡ˆ æ ¿∏∏Èº≠, πÊπÆ«œ¡ˆ æ ¿∫ ≥ÎµÂ∏¶ πÊπÆ«ÿæﬂ«‘. 
+		System.out.println(arr[n-1][m-1]);
+	}
+	
+	
+	
+	public static void BFS(int x, int y)
+	{
+		
+		
+		visited[x][y] = true;
+		
+		LinkedList<Node> queue = new LinkedList<Node>();
+		
+		queue.add(new Node(x,y));
+		
+		while(queue.size() != 0)
+		{
+			Node s = queue.poll();
+			
+			for(int i=0; i<4; i++)
+			{
+				int nextX = s.x + dx[i];
+				int nextY = s.y + dy[i];
+				
+				//ÏßÄÎèÑÎ•º ÎÑòÏñ¥Í∞ÄÎ©¥
+				if(nextX < 0 || nextX >= n || nextY<0 || nextY >=m )
+					continue;
+				//Î∞©Î¨∏Ìïú Í≥≥Ïù¥Î©¥
+				if (visited[nextX][nextY] || arr[nextX][nextY]==0)
+					continue;
+				
+				queue.add(new Node(nextX,nextY));
+				visited[nextX][nextY] = true;
+				arr[nextX][nextY] = arr[s.x][s.y] + 1;
+			}
+			
+		}
+	}
+}
+class Node {
+	int x;
+	int y;
+	
+	Node (int a, int b)
+	{
+		this.x = a;
+		this.y = b;
 	}
 }
