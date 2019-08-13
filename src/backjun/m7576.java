@@ -29,18 +29,15 @@ public class m7576 {
 		int n = sc.nextInt();
 		
 		int box[][] = new int[1000][1000];
-		
-		// mxn
-		
-		int start[] = new int[2];
-		start[0] = -1;
-		start[1] = -1;
+		boolean visited[][] = new boolean[1000][1000];
+
 		// start[0] = x좌표
 		// start[1] = y좌표
 		// 입력을 받으며 처음에 1인 지점이 있을 때, 
 		// 1인 지점의 좌표값을 start 배열에 넣어줌.
 		// start를 사용함으로, 토마토가 아예없을 때를 판단할 수 있음.
-		
+		LinkedList queue = new LinkedList();
+		LinkedList<toNode> list = new LinkedList<toNode>();
 		
 		for(int a=0; a<n; a++)
 		{
@@ -48,50 +45,43 @@ public class m7576 {
 			{
 				int tomato = sc.nextInt();
 				box[a][b] = tomato;
-				if(start[0]==-1 && start[1]==-1 && tomato == 1)
+				if(tomato == 1)
 				{
-					start[0] = b;
-					start[1] = a;
+					list.add(new toNode(b,a));
 				}
 			}
 		}
+
 		
-		
-		LinkedList<toNode> list = new LinkedList<toNode>();
-		
-		list.add(new toNode(start[0],start[1]));
-		
-		int day = 0;
 		while( !list.isEmpty() )
 		{
-			day++;
-			
 			toNode s = list.poll();
+			visited[s.y][s.x] = true;
 			
 			int left = s.x-1;
 			int right = s.x+1;
 			int up = s.y+1;
 			int down = s.y-1;
 			
-			if(left >= 0 && box[s.y][left] == 0)	
+			if(left >= 0 && box[s.y][left] == 0 && visited[s.y][left] == false)	
 			{
 				list.add(new toNode(left,s.y));
-				box[s.y][left] = 1;
+				box[s.y][left] = box[s.y][s.x] + 1;
 			}
-			if(right < m && box[s.y][right] == 0)
+			if(right < m && box[s.y][right] == 0 && visited[s.y][right] == false)
 			{
 				list.add(new toNode(right,s.y));
-				box[s.y][right] = 1;
+				box[s.y][right] = box[s.y][s.x] + 1;
 			}
-			if(up < n && box[up][s.x] == 0)
+			if(up < n && box[up][s.x] == 0 && visited[up][s.x] == false)
 			{
 				list.add(new toNode(s.x,up));
-				box[up][s.x] = 1;
+				box[up][s.x] = box[s.y][s.x] + 1;
 			}
-			if(down >= 0 && box[down][s.x] == 0)
+			if(down >= 0 && box[down][s.x] == 0 && visited[down][s.x] == false)
 			{
 				list.add(new toNode(s.x, down));
-				box[down][s.x] = 1;
+				box[down][s.x] = box[s.y][s.x] + 1;
 			}		
 			
 		}
@@ -100,17 +90,18 @@ public class m7576 {
 		// 토마토가 모두 익지 못하는 상황 -> day != 0 && 배열에 0이 남아있는 상황
 		// 그렇지 않을 때, 시간초 출력 
 		
-		
-		for(int a = 0; a<n; a++)
-		{
-			for (int b= 0; b<m; b++)
-			{
-				System.out.print(box[a][b]+"　");
-			}
-			System.out.println();
-		}
-		
-		System.out.println("day:" + day);
+		  int max = 0;
+	        for (int i = 0; i < n; i++) {
+	            for (int j = 0; j < m; j++) {
+	                if (box[i][j] == 0) {
+	                    //토마토가 모두 익지 못한 상황이라면  - 1
+	                    System.out.println(-1);
+	                    return;
+	                }
+	                max = Math.max(max, box[i][j]);
+	            }
+	        }
+	        System.out.println(max - 1);
 		
 	}
 }
@@ -120,7 +111,7 @@ class toNode{
 	
 	toNode(int a, int b)
 	{
-		this.x = a;
-		this.y = b;
+		x = a;
+		y = b;
 	}
 }
