@@ -2,7 +2,6 @@ package backjun;
 
 import java.util.*;
 
-
 public class m7576 {
 	/*
 	 * 첫 줄에는 상자의 크기를 나타내는 두 정수 M,N이 주어진다. 
@@ -12,10 +11,7 @@ public class m7576 {
 	 * 하나의 줄에는 상자 가로줄에 들어있는 토마토의 상태가 M개의 정수로 주어진다. 
 	 * 정수 1은 익은 토마토, 정수 0은 익지 않은 토마토, 정수 -1은 토마토가 들어있지 않은 칸을 나타낸다. 
 	 */
-	
-	static int[] dx = {-1,0,1,0};
-	static int[] dy = {0,1,0,-1};
-	
+
 	public static void main(String[] args) {
 		/*
 		 * 고려해야할 케이스
@@ -31,8 +27,6 @@ public class m7576 {
 		int box[][] = new int[1000][1000];
 		boolean visited[][] = new boolean[1000][1000];
 
-		// start[0] = x좌표
-		// start[1] = y좌표
 		// 입력을 받으며 처음에 1인 지점이 있을 때, 
 		// 1인 지점의 좌표값을 start 배열에 넣어줌.
 		// start를 사용함으로, 토마토가 아예없을 때를 판단할 수 있음.
@@ -102,7 +96,6 @@ public class m7576 {
 	            }
 	        }
 	        System.out.println(max - 1);
-		
 	}
 }
 class toNode{
