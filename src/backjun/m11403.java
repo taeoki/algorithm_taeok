@@ -2,12 +2,17 @@ package backjun;
 
 import java.util.*;
 public class m11403 {
+	static LinkedList<Integer> queue[];
+	static int visited[];
+	
 	public static void main(String[] args) {
+		
 		Scanner sc = new Scanner(System.in);
 		
 		int n = sc.nextInt();
 		
-		LinkedList<Integer> queue[] = new LinkedList[n+1];
+		queue = new LinkedList[n+1];
+		visited = new int[n+1];
 		
 		// [a][b]
 		for(int a=1; a<=n; a++)
@@ -26,11 +31,13 @@ public class m11403 {
 		
 		for(int a=1; a<=n; a++)
 		{
-			boolean visited[] = new boolean[n+1];
-			
-			
+			for(int b=1; b<=n; b++)
+			{
+				dfs(a,b);
+			}
 		}
 		
+
 		// 데이터가 잘 담겼는지
 		/*
 		for(int a=1; a<=n; a++)
@@ -45,13 +52,8 @@ public class m11403 {
 		*/
 	}
 	
-	public static void dfs(int startEdge, int findEdge , int size, boolean visited[])
+	public static void dfs(int from , int to)
 	{
-		visited[startEdge] = true;
 		
-		for(int i=1; i<=size; i++)
-		{
-			
-		}
 	}
 }
