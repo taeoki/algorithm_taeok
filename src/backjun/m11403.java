@@ -66,10 +66,7 @@ public class m11403 {
 			}
 		}
 	}
+}
 	
 	
-<<<<<<< HEAD
-}
-=======
-}
->>>>>>> branch 'master' of https://github.com/taeoki/javaAlgorithm.git
+
