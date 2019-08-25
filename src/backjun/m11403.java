@@ -16,11 +16,18 @@ public class m11403 {
 				int num = sc.nextInt();
 				
 				if(num == 1)
-				{
 					queue[1].add(b);
-					queue[b]
-				}
+				
 			}
+		}
+		
+		for(int a=1; a<=n; a++)
+		{
+			while(!queue[a].isEmpty())
+			{
+				System.out.print(queue[a].poll());
+			}
+			System.out.println();
 		}
 	}
 }
