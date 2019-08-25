@@ -71,7 +71,6 @@ public class m2178 {
 				visited[nextX][nextY] = true;
 				arr[nextX][nextY] = arr[s.x][s.y] + 1;
 			}
-			
 		}
 	}
 }
