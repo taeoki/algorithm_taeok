@@ -47,7 +47,7 @@ public class m6603 {
 	        for(int i=start; i<n; i++){
 	        result[i] = 1;
 	        
-	        //디버그용 프린트문 -------
+	      //디버그용 프린트문 -------
 	        System.out.print("dfs("+start+","+depth+"), i="+i+"  ");
 	        print();
 	        //--------------------

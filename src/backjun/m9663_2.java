@@ -36,12 +36,8 @@ public class m9663_2 {
 				chess[row+1][i] = 1;
 				
 				
-				//같은 행에 있으면 안됨
 				int sum = 0;
-				for(int j=1; j<=n; j++ )
-				{
-					sum += chess[row+1][j];
-				}
+				
 				// 대각선에 있으면 안됨 
 				
 				// 좌 감소 대각선 
@@ -79,7 +75,7 @@ public class m9663_2 {
 					row_k--;
 				}
 				
-				if(sum==1)
+				if(sum==0)
 				{
 					
 					System.out.println("row:"+row);
