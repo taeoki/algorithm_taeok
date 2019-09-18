@@ -27,12 +27,7 @@ public class m11279 {
 				if(prq.size() == 0)
 					System.out.println(0);
 				else
-				{
 					System.out.println(prq.poll());
-					//int max = Collections.max(s);
-					//System.out.println(max);
-					//s.remove(s.indexOf(max));
-				}
 				
 			}
 			else 
